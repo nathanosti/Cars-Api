@@ -25,6 +25,12 @@ class CategoriesRepository {
     });
 
     this.categories.push(category);
+
+    return this.categories;
+  }
+
+  listAll() {
+    return this.categories;
   }
 }
 
