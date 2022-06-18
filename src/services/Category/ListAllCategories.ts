@@ -1,4 +1,4 @@
-import { CategoriesRepository } from "../../repositories/CategoriesRepository";
+import { CategoriesRepository } from "../../repositories/CategoriesRepository/CategoriesRepository";
 
 class ListAllCategories {
   constructor(private categoriesRepository: CategoriesRepository) {}

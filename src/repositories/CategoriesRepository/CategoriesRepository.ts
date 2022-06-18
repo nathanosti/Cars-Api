@@ -1,7 +1,8 @@
-import { Category } from "../model/Category";
-import { ICreateCategory } from "../utils/interfaces";
+import { Category } from "../../model/Category";
+import { ICreateCategory } from "../../utils/interfaces";
+import { ICategoriesRepository } from "./ICategoriesRepository";
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
@@ -19,8 +20,6 @@ class CategoriesRepository {
     });
 
     this.categories.push(category);
-
-    return this.categories;
   }
 
   listAll() {
@@ -28,7 +27,7 @@ class CategoriesRepository {
   }
 
   findCategoryByName(name: string) {
-    const CategoryAlreadyExist = this.categories.find(
+    const CategoryAlreadyExist: Category | undefined = this.categories.find(
       (category) => category.name === name
     );
 

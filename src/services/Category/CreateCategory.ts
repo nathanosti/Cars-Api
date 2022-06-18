@@ -1,8 +1,8 @@
-import { CategoriesRepository } from "../../repositories/CategoriesRepository";
+import { ICategoriesRepository } from "../../repositories/CategoriesRepository/ICategoriesRepository";
 import { ICreateCategory } from "../../utils/interfaces";
 
 class CreateCategoryService {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ title, name, description }: ICreateCategory): void {
     const CategoryAlreadyExist =
