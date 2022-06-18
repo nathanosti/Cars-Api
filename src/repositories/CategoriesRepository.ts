@@ -1,10 +1,5 @@
 import { Category } from "../model/Category";
-
-interface ICreateCategory {
-  name: string;
-  title: string;
-  description: string;
-}
+import { ICreateCategory } from "../utils/interfaces";
 
 class CategoriesRepository {
   private categories: Category[];
