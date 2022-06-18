@@ -1,23 +1,24 @@
 import { Router } from "express";
+import { Category } from "../model/Category";
 
 const categoriesRoutes = Router();
 
-interface ICategories {
-  name: string;
-  description: string;
-}
-
-const categories: ICategories[] = [];
+const categories: Category[] = [];
 
 categoriesRoutes.post("/", (request, response) => {
-  const { name, description } = request.body;
+  const { title, name, description } = request.body;
 
-  categories.push({
+  const category = new Category();
+  Object.assign(category, {
     name,
+    title,
     description,
+    created_at: new Date(),
   });
 
-  return response.status(201).json(categories).send();
+  categories.push(category);
+
+  return response.status(201).json({ categories }).send();
 });
 
 export { categoriesRoutes };
