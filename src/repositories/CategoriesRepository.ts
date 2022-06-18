@@ -9,12 +9,6 @@ class CategoriesRepository {
   }
 
   create({ name, title, description }: ICreateCategory) {
-    const CategoriesAlreadyExist = this.categories.find(
-      (category) => category.title
-    );
-
-    if (CategoriesAlreadyExist) throw new Error("Categories Already Exists");
-
     const category: Category = new Category();
 
     Object.assign(category, {
@@ -31,6 +25,14 @@ class CategoriesRepository {
 
   listAll() {
     return this.categories;
+  }
+
+  findCategoryByName(name: string) {
+    const CategoryAlreadyExist = this.categories.find(
+      (category) => category.name === name
+    );
+
+    return CategoryAlreadyExist;
   }
 }
 

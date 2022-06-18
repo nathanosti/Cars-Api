@@ -8,11 +8,19 @@ const categories = new CategoriesRepository();
 categoriesRoutes.post("/", (request, response) => {
   const { title, name, description } = request.body;
 
+  const CategoryAlreadyExist = categories.findCategoryByName(name);
+
+  if (CategoryAlreadyExist)
+    return response
+      .status(405)
+      .json({ msg: "Categories Already Exists" })
+      .send();
+
   categories.create({ title, name, description });
 
   return response
     .status(201)
-    .json({ msg: "Category created successfully!" })
+    .json({ msg: "Category created successfully!", categories })
     .send();
 });
 
