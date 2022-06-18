@@ -7,6 +7,7 @@ const categoriesRoutes = Router();
 
 const categoriesRepository = new CategoriesRepository();
 
+//Route To Create a New Category
 categoriesRoutes.post("/", (request, response) => {
   const { title, name, description } = request.body;
 
@@ -20,6 +21,7 @@ categoriesRoutes.post("/", (request, response) => {
     .send();
 });
 
+//Route List All Categories
 categoriesRoutes.get("/", (request, response) => {
   const getAllCategories = new ListAllCategories(categoriesRepository);
 
