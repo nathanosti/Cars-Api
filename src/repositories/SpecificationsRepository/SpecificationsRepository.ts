@@ -20,8 +20,6 @@ class SpecificationsRepository implements ISpecificationsRepository {
 
     this.specifications.push(newSpecification);
 
-    console.log(this.specifications);
-
     const response = {
       msg: "Specification created successfully",
       newSpecification,
@@ -32,7 +30,6 @@ class SpecificationsRepository implements ISpecificationsRepository {
   }
 
   findByName(name: string) {
-    console.log(this.specifications);
     const specificationAlreadyExist: Specification | undefined =
       this.specifications.find((specification) => specification.name === name);
 
